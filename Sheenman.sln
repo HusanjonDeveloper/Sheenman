@@ -5,7 +5,7 @@ VisualStudioVersion = 17.4.33213.308
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sheenman.Api", "Sheenman.Api\Sheenman.Api.csproj", "{1839B7A9-38C5-4954-A670-BE2F71EC18D9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sheenmanapi.Test.Unit", "Sheenmanapi.Test.Unit\Sheenmanapi.Test.Unit.csproj", "{895089F7-8AA3-4DE2-898F-C56F28C65F82}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sheenmanapi.Test.Unit", "Sheenmanapi.Test.Unit\Sheenmanapi.Test.Unit.csproj", "{895089F7-8AA3-4DE2-898F-C56F28C65F82}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SheenmanApi.Infrasturucture.Build", "SheenmanApi.Infrasturucture.Build\SheenmanApi.Infrasturucture.Build.csproj", "{BEB16CA3-913F-4A80-9703-DBF108B7BB29}"
 EndProject
