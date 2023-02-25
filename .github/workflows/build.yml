@@ -1,0 +1,25 @@
+name: Sheenman
+on:
+  push:
+    branches:
+    - Master
+  pull_request:
+    branches:
+    - Master
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+    - name: Checking
+      uses: actions/checkout@v2
+    - name: Instal .Net
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 7.0.200
+        include-prerelease: false
+    - name: Restoring Nuget Patgetch
+      run: dotnet restore
+    - name: Bouilding Project
+      run: dotnet build --no-restore
+    - name: Running Test
+      run: dotnet test --no-build --verbosity normal
