@@ -1,7 +1,7 @@
-﻿//======================
+﻿//==================================================
 // Copyright (c) Coalition of Good-Hearted Engineers 
 // Free ToUse Comfort and Peace 
-//======================
+//===================================================
 
 using ADotNet.Clients;
 using ADotNet.Models.Pipelines.GithubPipelines.DotNets;

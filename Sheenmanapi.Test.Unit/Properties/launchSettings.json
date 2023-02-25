@@ -1,0 +1,12 @@
+{
+  "profiles": {
+    "Sheenmanapi.Test.Unit": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      },
+      "applicationUrl": "https://localhost:55865;http://localhost:55866"
+    }
+  }
+}

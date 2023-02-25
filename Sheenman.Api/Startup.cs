@@ -1,7 +1,7 @@
-//======================
+//==================================================
 // Copyright (c) Coalition of Good-Hearted Engineers 
 // Free ToUse Comfort and Peace 
-//======================
+//===================================================
 
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -9,6 +9,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
+using Sheenman.Api.Brokers.Storeges;
 
 namespace Sheenman.Api
 {
@@ -28,6 +29,7 @@ namespace Sheenman.Api
             };
 
             services.AddControllers();
+            services.AddDbContext<StoregesBroker>();
             
             services.AddSwaggerGen(operations =>
             {
