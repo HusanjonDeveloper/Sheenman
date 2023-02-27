@@ -30,7 +30,7 @@ namespace Sheenman.Api
 
             services.AddControllers();
             services.AddDbContext<StoregesBroker>();
-            
+            services.AddTransient<IStoregesBroker, StoregesBroker>();
             services.AddSwaggerGen(operations =>
             {
                 operations.SwaggerDoc(
