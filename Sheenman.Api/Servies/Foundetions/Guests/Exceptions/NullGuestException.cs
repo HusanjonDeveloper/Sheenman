@@ -8,9 +8,9 @@ using Xeptions;
 
 namespace Sheenman.Api.Servies.Foundetions.Guests.Exceptions
 {
-    public class NullGuestExceptions: Xeption
+    public class NullGuestException: Xeption
     {
-        public NullGuestExceptions()
+        public NullGuestException()
         :base(message:"Guest is Null")
         {}
     }
