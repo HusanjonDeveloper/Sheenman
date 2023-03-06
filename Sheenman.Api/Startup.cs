@@ -9,6 +9,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
+using Sheenman.Api.Brokers.Loggings;
 using Sheenman.Api.Brokers.Storeges;
 
 namespace Sheenman.Api
@@ -30,14 +31,16 @@ namespace Sheenman.Api
 
             services.AddControllers();
             services.AddDbContext<StoregesBroker>();
-            services.AddTransient<IStoregesBroker, StoregesBroker>();
+            AddBrokers(services);
+
             services.AddSwaggerGen(operations =>
             {
                 operations.SwaggerDoc(
-                    name:"v1",
+                    name: "v1",
                    info: apiInfo);
             });
         }
+
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment enveriment)
         {
@@ -59,6 +62,12 @@ namespace Sheenman.Api
             app.UseEndpoints(endpoints =>
                 endpoints.MapControllers());
 
+
+        }
+        private static void AddBrokers(IServiceCollection services)
+        {
+            services.AddTransient<IStoregesBroker, StoregesBroker>();
+            services.AddTransient<ILoggingBroker, LoggingBroker>();
         }
     }
 }
