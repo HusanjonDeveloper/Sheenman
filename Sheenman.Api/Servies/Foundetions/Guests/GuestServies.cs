@@ -16,8 +16,8 @@ namespace Sheenman.Api.Servies.Foundetions.Guests
         public GuestServies(IStoregesBroker storegesBroker) =>
             this.storegesBroker = storegesBroker;
 
-        public ValueTask<Guest> AddGuestAsync(Guest guest) =>
-            throw new System.NotImplementedException();
+        public async ValueTask<Guest> AddGuestAsync(Guest guest) =>
+            await this.storegesBroker.InsertGuestAsync(guest);
 
     }
 }
