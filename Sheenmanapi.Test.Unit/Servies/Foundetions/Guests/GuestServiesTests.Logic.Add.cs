@@ -16,11 +16,11 @@ namespace Sheenmanapi.Test.Unit.Servies.Foundetions.Guests
           
             Guest randomGuest = CreateRandomGuest();
             Guest inputGuest = randomGuest;
-            Guest persistedGuest = inputGuest;
-            Guest excepdetGuest = persistedGuest.DeepClone();
+            Guest storageGuest = inputGuest;
+            Guest excepdetGuest = storageGuest.DeepClone();
 
             this.StoregeBrokerMock.Setup(broker =>
-            broker.InsertGuestAsync(inputGuest)).ReturnsAsync(persistedGuest);
+            broker.InsertGuestAsync(inputGuest)).ReturnsAsync(storageGuest);
             
             // When
             
@@ -29,7 +29,7 @@ namespace Sheenmanapi.Test.Unit.Servies.Foundetions.Guests
 
             // Then 
 
-            actualGuest.Should().BeEquivalentTo(persistedGuest);
+            actualGuest.Should().BeEquivalentTo(storageGuest);
 
             this.StoregeBrokerMock.Verify(broker =>
             broker.InsertGuestAsync(inputGuest), Times.Once());
