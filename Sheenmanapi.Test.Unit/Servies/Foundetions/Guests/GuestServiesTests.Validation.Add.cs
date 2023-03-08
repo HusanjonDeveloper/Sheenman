@@ -17,7 +17,7 @@ namespace Sheenmanapi.Test.Unit.Servies.Foundetions.Guests
             // Given 
 
             Guest nullGuest = null;
-            var nullGuestException = new NullGuestException();
+            var nullGuestException = new NullGuestExceptions();
 
             var expectedGuestValidationException = 
                 new GuestValidationException(nullGuestException);
