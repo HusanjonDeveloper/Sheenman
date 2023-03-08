@@ -35,6 +35,7 @@ namespace Sheenmanapi.Test.Unit.Servies.Foundetions.Guests
             broker.InsertGuestAsync(inputGuest), Times.Once());
 
             this.StoregeBrokerMock.VerifyNoOtherCalls();
+            this.loggingBrokerMock.VerifyNoOtherCalls();
 
         }
 

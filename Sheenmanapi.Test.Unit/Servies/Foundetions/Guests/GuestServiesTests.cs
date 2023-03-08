@@ -5,6 +5,7 @@
 
 using FluentAssertions;
 using Moq;
+using Sheenman.Api.Brokers.Loggings;
 using Sheenman.Api.Brokers.Storeges;
 using Sheenman.Api.Models.Foundetions.Guests;
 using Sheenman.Api.Servies.Foundetions.Guests;
@@ -16,13 +17,17 @@ namespace Sheenmanapi.Test.Unit.Servies.Foundetions.Guests
     public partial class GuestServiesTests
     {
         private readonly Mock<IStoregesBroker> StoregeBrokerMock;
+        private readonly Mock<ILoggingBroker> loggingBrokerMock;
         private readonly IGuestServies guestServies;
 
         public GuestServiesTests()
         {
            this.StoregeBrokerMock = new Mock<IStoregesBroker>();
-             this.guestServies =
-                new GuestServies(storegesBroker:this.StoregeBrokerMock.Object);
+            this.loggingBrokerMock= new Mock<ILoggingBroker>();
+             
+            this.guestServies =new GuestServies(
+                 storegesBroker:this.StoregeBrokerMock.Object,
+                 loggingBroker:this.loggingBrokerMock.Object);
         }
 
         private DateTimeOffset GetRandomDateTimeOffset() =>
