@@ -11,7 +11,7 @@ namespace Sheenman.Api.Servies.Foundetions.Guests.Exceptions
     {
         public GuestValidationException(Xeption innerException )
         :base(message:"Guest Validation error occurred, fix the errors and try again",
-             innerException)
+             innerException:innerException)
         {}
     }
 }

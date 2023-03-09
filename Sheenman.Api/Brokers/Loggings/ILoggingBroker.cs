@@ -6,4 +6,5 @@ namespace Sheenman.Api.Brokers.Loggings
     {
         void LogError(Exception exception);
     }
+
 }

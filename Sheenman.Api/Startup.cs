@@ -40,8 +40,6 @@ namespace Sheenman.Api
                    info: apiInfo);
             });
         }
-
-
         public void Configure(IApplicationBuilder app, IWebHostEnvironment enveriment)
         {
             if (enveriment.IsDevelopment())
