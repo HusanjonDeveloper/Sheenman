@@ -24,30 +24,14 @@ namespace Sheenman.Api.Servies.Foundetions.Guests
             this.loggingBroker = loggingBroker;
         }
 
-        public async ValueTask<Guest> AddGuestAsync(Guest guest)
-        {
-            try
+        public  ValueTask<Guest> AddGuestAsync(Guest guest) =>
+            TryCatch(async () =>
             {
-                if (guest is null)
-                {
-                    throw new NullGuestExceptions();
 
-                }
-                return await this.storegesBroker.InsertGuestAsync(guest);
+            ValidateGuestNotNull(guest);
+            return await this.storegesBroker.InsertGuestAsync(guest);
 
-            }
-            catch (NullGuestExceptions nullGuestExceptions)
-            {
-                var guestValidationException =
-                    new GuestValidationException(nullGuestExceptions);
-              
-                this.loggingBroker.LogError(guestValidationException);
-
-                throw guestValidationException;
-            }
-
-
-        }
+            });
 
     }
 }
