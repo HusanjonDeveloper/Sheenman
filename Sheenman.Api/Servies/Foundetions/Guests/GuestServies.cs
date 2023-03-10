@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Sheenman.Api.Brokers.Loggings;
 using Sheenman.Api.Brokers.Storeges;
 using Sheenman.Api.Models.Foundetions.Guests;
+using Sheenman.Api.Servies.Foundetions.Guests.Exceptions;
 
 namespace Sheenman.Api.Servies.Foundetions.Guests
 {
@@ -26,7 +27,26 @@ namespace Sheenman.Api.Servies.Foundetions.Guests
 
         public async ValueTask<Guest> AddGuestAsync(Guest guest)
         {
-         return await this.storegesBroker.InsertGuestAsync(guest);
+            try
+            {
+            if(guest is null)
+            {
+                throw new NullGuestExceptions();
+
+            }
+              return await this.storegesBroker.InsertGuestAsync(guest);
+
+            }
+            catch (NullGuestExceptions nullGuestExceptions)
+            {
+                var guestValidationException =
+                    new GuestValidationException(nullGuestExceptions);
+              
+                this.loggingBroker.LogError(guestValidationException);
+
+                throw guestValidationException;
+            }
+
 
         }
 
