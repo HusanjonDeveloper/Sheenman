@@ -11,15 +11,14 @@ using Sheenman.Api.Servies.Foundetions.Guests.Exceptions;
 
 namespace Sheenman.Api.Servies.Foundetions.Guests
 {
-    public class GuestServies : IGuestServies
+    public partial class GuestServies : IGuestServies
     {
         private readonly IStoregesBroker storegesBroker;
         private readonly ILoggingBroker loggingBroker;
 
-        public GuestServies(IStoregesBroker storegesBroker) =>
-            this.storegesBroker = storegesBroker;
-
-        public GuestServies(IStoregesBroker storegesBroker, ILoggingBroker loggingBroker)
+        public GuestServies(
+            IStoregesBroker storegesBroker,
+            ILoggingBroker loggingBroker) 
         {
             this.storegesBroker = storegesBroker;
             this.loggingBroker = loggingBroker;
@@ -29,12 +28,12 @@ namespace Sheenman.Api.Servies.Foundetions.Guests
         {
             try
             {
-            if(guest is null)
-            {
-                throw new NullGuestExceptions();
+                if (guest is null)
+                {
+                    throw new NullGuestExceptions();
 
-            }
-              return await this.storegesBroker.InsertGuestAsync(guest);
+                }
+                return await this.storegesBroker.InsertGuestAsync(guest);
 
             }
             catch (NullGuestExceptions nullGuestExceptions)
