@@ -37,12 +37,12 @@ namespace Sheenmanapi.Test.Unit.Servies.Foundetions.Guests
         private DateTimeOffset GetRandomDateTimeOffset() =>
             new DateTimeRange(earliestDate: DateTime.UnixEpoch).GetValue();
         
-        private Expression<Func<Xeption, bool>> SomeExceptionAs(Xeption expectedException)
+        private Expression<Func<Xeption, bool>> SomeExceptionAs(Xeption expectedGuestValidationException)
         {
             return actualException =>
-            actualException.Message == expectedException.Message
-            &&  actualException.InnerException.Message == expectedException.InnerException.Message
-            && (actualException.InnerException as Xeption).DataEquals(expectedException.InnerException.Data);
+                actualException.Message == expectedGuestValidationException.Message
+                && actualException.InnerException.Message == expectedGuestValidationException.InnerException.Message
+                && (actualException.InnerException as Xeption).DataEquals(expectedGuestValidationException.InnerException.Data);
         }
 
         private Filler<Guest> CreateGuestFiller(DateTimeOffset dates)
