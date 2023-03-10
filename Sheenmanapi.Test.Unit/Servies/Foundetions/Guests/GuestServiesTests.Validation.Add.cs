@@ -3,6 +3,7 @@
 // Free ToUse Comfort and Peace 
 //===================================================
 
+using Moq;
 using Sheenman.Api.Models.Foundetions.Guests;
 using Sheenman.Api.Servies.Foundetions.Guests.Exceptions;
 using Xunit;
@@ -31,6 +32,18 @@ namespace Sheenmanapi.Test.Unit.Servies.Foundetions.Guests
 
             await Assert.ThrowsAsync<GuestValidationException>(() =>
             addGuestTask.AsTask());
+
+            this.loggingBrokerMock.Verify(broker =>
+            broker.LogError(It.Is(SomeExceptionAs(expectedGuestValidationException))),
+            Times.Once);
+
+            this.StoregeBrokerMock.Verify(broker =>
+            broker.InsertGuestAsync(It.IsAny<Guest>()),
+            Times.Never);
+
+            this.loggingBrokerMock.VerifyNoOtherCalls();
+            this.StoregeBrokerMock.VerifyNoOtherCalls();
+           
         }
     }
 }
