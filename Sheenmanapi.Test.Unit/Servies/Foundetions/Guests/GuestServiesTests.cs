@@ -36,7 +36,21 @@ namespace Sheenmanapi.Test.Unit.Servies.Foundetions.Guests
             CreateGuestFiller(dates:GetRandomDateTimeOffset()).Create();
         private DateTimeOffset GetRandomDateTimeOffset() =>
             new DateTimeRange(earliestDate: DateTime.UnixEpoch).GetValue();
-        
+
+        private static int GetRandomNumber() =>
+            new IntRange(2, 9).GetValue();
+
+        private static T GetInvalidEnum<T>()
+        {
+            int randomNumber = GetRandomNumber();
+
+            while (Enum.IsDefined(typeof(T), randomNumber) is true)
+            {
+                randomNumber = GetRandomNumber();
+            }
+            return (T)(object)randomNumber;
+        }
+
         private Expression<Func<Xeption, bool>> SomeExceptionAs(Xeption expectedGuestValidationException)
         {
             return actualException =>
