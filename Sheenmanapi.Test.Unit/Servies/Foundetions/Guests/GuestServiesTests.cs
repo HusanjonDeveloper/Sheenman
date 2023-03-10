@@ -58,7 +58,6 @@ namespace Sheenmanapi.Test.Unit.Servies.Foundetions.Guests
                 && actualException.InnerException.Message == expectedGuestValidationException.InnerException.Message
                 && (actualException.InnerException as Xeption).DataEquals(expectedGuestValidationException.InnerException.Data);
         }
-
         private Filler<Guest> CreateGuestFiller(DateTimeOffset dates)
         {
             var filler = new Filler<Guest>();
