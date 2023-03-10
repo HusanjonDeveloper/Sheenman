@@ -24,6 +24,10 @@ namespace Sheenman.Api.Servies.Foundetions.Guests
             {
                 throw CreateAndLogValidationException(nullGuestExceptions);
             }
+            catch(InvalidGuestException invalidGuestException)
+            {
+                throw CreateAndLogValidationException(invalidGuestException);
+            }
         }
 
         private GuestValidationException CreateAndLogValidationException(Xeption xeption)
