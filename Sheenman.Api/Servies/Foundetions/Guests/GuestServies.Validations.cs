@@ -21,7 +21,8 @@ namespace Sheenman.Api.Servies.Foundetions.Guests
                 (Rule: IsInvalid(guest.LastName), Parameter: nameof(Guest.LastName)),
                 (Rule: IsInvalid(guest.DateOgBrith), Parameter: nameof(Guest.DateOgBrith)),
                 (Rule: IsInvalid(guest.Email), Parameter: nameof(Guest.Email)),
-                (Rule: IsInvalid(guest.Adders), Parameter: nameof(Guest.Adders)));
+                (Rule: IsInvalid(guest.Adders), Parameter: nameof(Guest.Adders)),
+                (Rule: IsInvalid(guest.Gender), Parameter: nameof(Guest.Gender)));
                    
         }
         private void ValidateGuestNotNull(Guest guest)
@@ -49,6 +50,11 @@ namespace Sheenman.Api.Servies.Foundetions.Guests
         {
             Conditon = date == default,
             Message = "Date is requred"
+        };
+        private static dynamic IsInvalid(GenderType gender) => new
+        {
+            Conditon = Enum.IsDefined(typeof(GenderType), gender) is false,
+            Message = "Value is Invalid"
         };
 
         private static void  Validate(params(dynamic Rule,string Parameter)[]validations)

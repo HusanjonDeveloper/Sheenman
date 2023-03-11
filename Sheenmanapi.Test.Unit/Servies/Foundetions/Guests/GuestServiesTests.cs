@@ -4,7 +4,9 @@
 //===================================================
 
 using System.Linq.Expressions;
+using System.Runtime.Serialization;
 using FluentAssertions;
+using Microsoft.Data.SqlClient;
 using Moq;
 using Sheenman.Api.Brokers.Loggings;
 using Sheenman.Api.Brokers.Storeges;
@@ -36,7 +38,23 @@ namespace Sheenmanapi.Test.Unit.Servies.Foundetions.Guests
             CreateGuestFiller(dates:GetRandomDateTimeOffset()).Create();
         private DateTimeOffset GetRandomDateTimeOffset() =>
             new DateTimeRange(earliestDate: DateTime.UnixEpoch).GetValue();
-        
+
+        private static int GetRandomNumber() =>
+            new IntRange(2, 9).GetValue();
+
+        private static SqlException GetSqlError() =>
+           (SqlException) FormatterServices.GetSafeUninitializedObject(typeof(SqlException));
+        private static T GetInvalidEnum<T>()
+        {
+            int randomNumber = GetRandomNumber();
+
+            while (Enum.IsDefined(typeof(T), randomNumber) is true)
+            {
+                randomNumber = GetRandomNumber();
+            }
+            return (T)(object)randomNumber;
+        }
+
         private Expression<Func<Xeption, bool>> SomeExceptionAs(Xeption expectedGuestValidationException)
         {
             return actualException =>
@@ -44,7 +62,6 @@ namespace Sheenmanapi.Test.Unit.Servies.Foundetions.Guests
                 && actualException.InnerException.Message == expectedGuestValidationException.InnerException.Message
                 && (actualException.InnerException as Xeption).DataEquals(expectedGuestValidationException.InnerException.Data);
         }
-
         private Filler<Guest> CreateGuestFiller(DateTimeOffset dates)
         {
             var filler = new Filler<Guest>();
