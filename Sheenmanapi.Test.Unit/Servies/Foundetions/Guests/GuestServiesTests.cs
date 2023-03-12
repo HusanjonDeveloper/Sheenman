@@ -58,13 +58,8 @@ namespace Sheenmanapi.Test.Unit.Servies.Foundetions.Guests
             return (T)(object)randomNumber;
         }
 
-        private Expression<Func<Xeption, bool>> SomeExceptionAs(Xeption expectedGuestValidationException)
-        {
-            return actualException =>
-                actualException.Message == expectedGuestValidationException.Message
-                && actualException.InnerException.Message == expectedGuestValidationException.InnerException.Message
-                && (actualException.InnerException as Xeption).DataEquals(expectedGuestValidationException.InnerException.Data);
-        }
+        private Expression<Func<Xeption, bool>> SomeExceptionAs(Xeption expectedException)=>
+            actualException => actualException.SameExceptionAs(expectedException);
         private Filler<Guest> CreateGuestFiller(DateTimeOffset dates)
         {
             var filler = new Filler<Guest>();
