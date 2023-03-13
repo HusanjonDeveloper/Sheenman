@@ -16,7 +16,6 @@ namespace Sheenman.Api.Servies.Foundetions.Guests.Exceptions
         : base(message:"Faild guest  storage error occcurred ,contact support",
               innerException) 
         {}
-
         public FaildGuestStorageException(SqlException sqlException)
         {
             this.sqlException = sqlException;
