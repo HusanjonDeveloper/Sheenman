@@ -26,7 +26,6 @@ namespace Sheenman.Api.Servies.Foundetions.Guests
         public  ValueTask<Guest> AddGuestAsync(Guest guest) =>
             TryCatch(async () =>
             {
-
                 ValidateGuestOnAdd(guest);
             return await this.storegesBroker.InsertGuestAsync(guest);
 
