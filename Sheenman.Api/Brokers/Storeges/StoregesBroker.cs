@@ -27,7 +27,6 @@ namespace Sheenman.Api.Brokers.Storeges
             optionsBuilder.UseSqlServer(connectionString);
 
         }
-
         public override void Dispose() {}
 
     }

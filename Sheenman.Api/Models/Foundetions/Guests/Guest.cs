@@ -18,6 +18,5 @@ namespace Sheenman.Api.Models.Foundetions.Guests
         public string Adders { get; set; }
         public GenderType Gender { get; set; }
 
-
     }
 }

@@ -147,6 +147,5 @@ namespace Sheenmanapi.Test.Unit.Servies.Foundetions.Guests
             this.loggingBrokerMock.VerifyNoOtherCalls();
             this.StoregeBrokerMock.VerifyNoOtherCalls();
         }
-
     }
 }
